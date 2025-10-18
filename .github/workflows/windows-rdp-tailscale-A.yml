@@ -124,7 +124,15 @@ jobs:
 
         run: |
 
-          function ToIntOr($v, $def){ if("$v" -match '^\d+$'){[int]$v}else{[int]$def} }
+          - name: Define PowerShell helper
+  shell: pwsh
+  run: |
+    function ToIntOr($v, $def) {
+        if ("$v" -match '^\d+$') { [int]$v } else { [int]$def }
+    }
+    # Call your function below if needed
+    Write-Host (ToIntOr "123" 0)
+
 
 
 
